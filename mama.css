@@ -1,0 +1,174 @@
+/* Responsive Layout Web Design
+   Mama's Restaurant combines fluid sizing with significant layout
+   changes at defined breakpoints. Content scales smoothly between
+   breakpoints while media queries reorganise the page when required. */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: whitesmoke;
+    line-height: 1.5;
+}
+
+/* FLUID FOUNDATION
+   The page occupies 90% of the viewport and grows only to a sensible
+   maximum width on very large screens. */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    padding: clamp(18px, 4vw, 30px);
+    background-color: rgb(94, 174, 196);
+}
+
+header h1 {
+    font-size: clamp(26px, 4vw, 36px);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 30px);
+    padding: 15px;
+    background-color: black;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+main {
+    margin: clamp(10px, 3vw, 30px);
+}
+
+.welcome {
+    text-align: center;
+    margin: clamp(10px, 2vw, 20px);
+    padding: clamp(10px, 2vw, 20px);
+}
+
+#menu,
+#specials,
+#about {
+    margin: clamp(20px, 3vw, 30px) 0;
+    padding: clamp(10px, 2vw, 20px);
+}
+
+.menu-item {
+    margin: 15px 0;
+    padding: clamp(10px, 2vw, 15px);
+    border: 1px solid gray;
+    background-color: white;
+}
+
+.special {
+    margin: 15px 0;
+    padding: clamp(10px, 2vw, 20px);
+    border: 2px solid darkorange;
+    background-color: lightyellow;
+}
+
+footer {
+    text-align: center;
+    padding: clamp(15px, 2vw, 20px);
+    background-color: rgb(20, 31, 44);
+    color: white;
+}
+
+/* Fluid media: images scale smoothly with their available space. */
+.restaurant-logo {
+    width: clamp(150px, 18vw, 210px);
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.menu-photo {
+    width: min(100%, 420px);
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+    margin: 12px auto 18px;
+    border-radius: 8px;
+}
+
+/* ---------------------------------------------------------
+   BREAKPOINT 1: MEDIUM VIEWPORTS (below 1200px)
+   Significant adaptive change: spacing and maximum image size reduce,
+   while widths remain fluid within the viewport.
+   --------------------------------------------------------- */
+@media screen and (max-width: 1199px) {
+    .container {
+        width: 92%;
+        max-width: 900px;
+    }
+
+    .menu-photo {
+        width: min(100%, 380px);
+    }
+}
+
+/* ---------------------------------------------------------
+   BREAKPOINT 2: SMALL VIEWPORTS (below 768px)
+   Significant adaptive change: navigation changes from a horizontal
+   flex row to vertically stacked links. Everything else remains fluid.
+   --------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+    .container {
+        width: 100%;
+        max-width: none;
+    }
+
+    header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 10px;
+    }
+
+    nav a {
+        display: block;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    main {
+        margin: 10px;
+    }
+
+    .welcome {
+        margin: 10px 0;
+    }
+
+    #menu,
+    #specials,
+    #about {
+        margin: 20px 0;
+        padding: 10px;
+    }
+
+    .menu-photo {
+        width: min(100%, 320px);
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}
